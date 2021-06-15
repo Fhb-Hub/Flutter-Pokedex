@@ -1,16 +1,17 @@
-# pokedex_manha
+# Pokedex 
 
-A new Flutter project.
+Desafios resolvidos do app "Pokedex" da aula de Desenvolvimento Mobile da Faculdade de Tecnologia de Americana (FATEC Americana).  
 
-## Getting Started
+# Aluno  
 
-This project is a starting point for a Flutter application.
+Fellipe Henry Bordon  
 
-A few resources to get you started if this is your first Flutter project:
+## Desafios  
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Todos os desafio abaixo foram concluidos.   
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+* [x] Modificar o PokeCard para receber um gradiente de cor, de acordo com os tipos do Pokemon; 
+* [x] Trocar a fonte do título da Pokédex para fonte Pokemon; 
+* [x] Escolher uma nova informação da PokeAPI e trazer para interface gráfica; 
+* [x] Criar uma barra de busca de pokemon na HomePage (observação: a barra de busca foi criada, entretanto ela não executa a pesquisa na PokeAPI); 
+* [x] Converter o código para null safety;
