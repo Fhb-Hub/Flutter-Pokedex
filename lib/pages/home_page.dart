@@ -12,6 +12,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final _controller = HomeController(PokeRepositoryImpl());
+  bool search = false;
 
   @override
   void initState() {
@@ -21,6 +22,11 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> _initialize() async {
     await _controller.fetch();
+    setState(() {});
+  }
+
+  Future<void> _filter(String name) async {
+    await _controller.filter(name);
     setState(() {});
   }
 
@@ -44,18 +50,52 @@ class _HomePageState extends State<HomePage> {
 
   AppBar _buildAppBar() {
     return AppBar(
-      title: Text(
-        'Pokedex',
-        style: TextStyle(fontFamily: 'PokemonSolid', color: Colors.white),
-      ),
+      title: !search
+          ? Text(
+              'Pokedex',
+              style: TextStyle(fontFamily: 'PokemonSolid', color: Colors.white),
+            )
+          : TextField(
+              style:
+                  TextStyle(color: Colors.white, fontFamily: "PokemonHollow"),
+              decoration: InputDecoration(
+                hintText: "Buscar pokemon...",
+                hintStyle:
+                    TextStyle(color: Colors.white, fontFamily: "PokemonHollow"),
+                icon: Icon(Icons.search, color: Colors.white),
+              ),
+              autofocus: true,
+              onChanged: (name) {
+                _filter(name);
+              },
+            ),
       centerTitle: true,
       backgroundColor: Colors.red.shade800,
       iconTheme: IconThemeData(color: Colors.white),
-      actions: [
-        IconButton(
-          icon: Icon(Icons.info_outline),
-          onPressed: () {},
-        ),
+      actions: <Widget>[
+        search
+            ? Container(
+                margin: EdgeInsets.only(right: 10),
+                child: IconButton(
+                  icon: Icon(Icons.close),
+                  onPressed: () {
+                    setState(() {
+                      this.search = false;
+                    });
+                  },
+                ),
+              )
+            : Container(
+                margin: EdgeInsets.only(right: 10),
+                child: IconButton(
+                  icon: Icon(Icons.search),
+                  onPressed: () {
+                    setState(() {
+                      this.search = true;
+                    });
+                  },
+                ),
+              ),
       ],
     );
   }

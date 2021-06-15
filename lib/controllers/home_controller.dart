@@ -1,3 +1,4 @@
+import 'package:pokedex_manha/core/app_api.dart';
 import 'package:pokedex_manha/core/errors.dart';
 import 'package:pokedex_manha/models/pokemon_model.dart';
 import 'package:pokedex_manha/repositories/poke_repository.dart';
@@ -21,6 +22,10 @@ class HomeController {
     failure = null;
     final result = await _repository.fetch(limit: _limit, offset: _offset);
     result.fold((l) => failure = l, (r) => pokemons.addAll(r));
+  }
+
+  Future<PokemonModel> filter(String name) async {
+    return await _repository.fetchByUrl('$kBaseUrl/pokemon/?name=$name');
   }
 
   Future<void> next() async {
